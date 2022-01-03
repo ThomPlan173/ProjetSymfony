@@ -49,9 +49,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $articles;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Link::class, mappedBy="user")
+     */
+    private $links;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->yes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -180,6 +186,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             if ($article->getAuteur() === $this) {
                 $article->setAuteur(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Link[]
+     */
+    public function getLinks(): Collection
+    {
+        return $this->links;
+    }
+
+    public function addLink(Link $link): self
+    {
+        if (!$this->yes->contains($link)) {
+            $this->link[] = $link;
+            $link->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLink(Link $link): self
+    {
+        if ($this->link->removeElement($link)) {
+            $link->removeUser($this);
         }
 
         return $this;
