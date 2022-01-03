@@ -1,0 +1,21 @@
+{% extends 'login.html.twig' %}
+
+{% block title %}Hello TestController!
+{% endblock %}
+
+{% block body %}
+
+	<div>
+		Bonjour {{prenom}} !<br />
+		{% if age > 18 %}
+			Vous etes majeur !
+		{% else %}
+			Vous etes mineur !
+		{% endif %}
+        {% for day in week %}
+            <li>{{day}}</li>
+        {% endfor %}
+
+       <p> Nous sommes le : {{ date|date("m/d/Y") }} et il est : {{ date|date("H:i:s", "Europe/Paris") }}.</p>
+	</div>
+{% endblock %}
