@@ -32,16 +32,14 @@ class Article
      */
     private $create_at;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $author;
+
+
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $category;
+    private $auteur;
 
     public function getId(): ?int
     {
@@ -84,26 +82,18 @@ class Article
         return $this;
     }
 
-    public function getAuthor(): ?string
+
+
+
+
+    public function getAuteur(): ?User
     {
-        return $this->author;
+        return $this->auteur;
     }
 
-    public function setAuthor(string $author): self
+    public function setAuteur(?User $auteur): self
     {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
+        $this->auteur = $auteur;
 
         return $this;
     }
