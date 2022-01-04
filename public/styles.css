@@ -57,7 +57,7 @@ tfoot tr:last-child td {
 th {
   text-align: left;
   background: #d3d3d3;
-  color: white;
+  color: black;
 }
 
 thead tr:first-child,
@@ -68,15 +68,7 @@ thead tr:first-child th {
   border-left: 1px solid white;
 }
 
-tfoot tr {
-  background-color: #d3d3d3;
-  color: white;
-  font-weight: bold;
-}
-
 tbody tr:nth-child(even) {
-  /*  apply css for row and neglect the folowing and start again   */
-
   background-color: #e4f1fd;
 }
 
