@@ -26,8 +26,8 @@
 					<td>{{ article.createAt ? article.createAt|date('Y-m-d') : '' }}</td>
 
 					<td>
-						<a href="{{ path('blog_show', {'id': article.id}) }}">View</a>
-						<a href="{{ path('blog_edit', {'id': article.id}) }}">Edit</a>
+						<a class="btn btn-primary" href="{{ path('blog_show', {'id': article.id}) }}">View</a>
+						<a class="btn btn-primary" href="{{ path('blog_edit', {'id': article.id}) }}">Edit</a>
 					</td>
 				</tr>
 			{% else %}
