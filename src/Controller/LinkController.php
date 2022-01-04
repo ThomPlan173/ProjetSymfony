@@ -6,10 +6,11 @@ use App\Entity\Link;
 use App\Form\LinkType;
 use App\Repository\LinkRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/link')]
 class LinkController extends AbstractController
@@ -82,7 +83,7 @@ class LinkController extends AbstractController
     }
 
 
-
+    #[IsGranted('ROLE_USER')]
     #[Route('/vote/{id}/{type}', name: 'link_vote', methods: ['GET'])]
     public function vote(LinkRepository $repo, int $id, String $type, EntityManagerInterface $entityManager): Response
     {
