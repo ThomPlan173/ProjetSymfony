@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Link index
+{% endblock %}
+
+{% block body %}
+	<h1>Link index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Score</th>
+				<th>Titre</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for link in links %}
+				<tr>
+					<td>{{ link.id }}</td>
+					<td>{{ link.score }}</td>
+					<td>{{ link.titre }}</td>
+					<td>
+
+						<a href="{{ path('link_vote', {'id': link.id, 'type':'+'}) }}" type="button" type="number" id="link" name="link">vote +</a>
+
+
+						<a href="{{ path('link_vote', {'id': link.id, 'type':'-'}) }}" type="button" type="number" id="link" name="link">vote _</a>
+
+						{# <input href="{{ path('link_vote', {'id': link.id, 'type':'+'}) }}" type="number" id="vote" name="vote"> #}
+
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('link_new') }}">Create new</a>
+{% endblock %}
